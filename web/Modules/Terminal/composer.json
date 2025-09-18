@@ -1,0 +1,31 @@
+{
+    "name": "phyre/terminal",
+    "description": "",
+    "authors": [
+        {
+            "name": "Bozhidar Slaveykov",
+            "email": "selfworksbg@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Terminal\\": "",
+            "Modules\\Terminal\\App\\": "app/",
+            "Modules\\Terminal\\Database\\Factories\\": "database/factories/",
+            "Modules\\Terminal\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Terminal\\Tests\\": "tests/"
+        }
+    }
+}

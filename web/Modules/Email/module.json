@@ -1,0 +1,14 @@
+{
+    "name": "Email",
+    "alias": "email",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "logoIcon": "Modules/Email/resources/assets/email-svg/logo.svg",
+    "category": "DevOps",
+    "adminUrl": "/admin/email",
+    "providers": [
+        "Modules\\Email\\App\\Providers\\EmailServiceProvider"
+    ],
+    "files": []
+}

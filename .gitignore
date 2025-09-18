@@ -1,0 +1,24 @@
+web/storage/installed
+
+web/config.php
+web/phyre-config.ini
+
+
+# vitepress build output
+**/.vitepress/cache/
+/docs/node_modules/
+
+
+./idea/*
+.idea/webServers.xml
+.idea/vcs.xml
+.idea/sshConfigs.xml
+.idea/PhyrePanel.iml
+.idea/phpunit.xml
+.idea/php.xml
+.idea/modules.xml
+.idea/deployment.xml
+/web/Modules/Microweber/vendor/
+.aider*
+/.vscode
+.env

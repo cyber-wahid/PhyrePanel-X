@@ -1,0 +1,69 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+body {
+    font-family: var(--font-family) !important;
+}
+
+.fi-sidebar-item .fi-sidebar-item-button {
+    @apply rounded-lg;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-button {
+    @apply rounded-lg ; /* bg-[#e5e9f0] */
+}
+
+.fi-input-wrp {
+    @apply ring-1 ;
+}
+
+
+.fi-ta-ctn {
+    @apply shadow-md rounded-2xl border-none ring-0 dark:ring-1; /*rounded-none*/
+}
+
+
+.fi-section, .fi-wi-stats-overview-stat {
+    @apply shadow-md rounded-2xl border-none ring-0 dark:ring-1;
+}
+
+
+.fi-topbar .fi-tenant-menu {
+    @apply lg:!hidden;
+}
+
+.fi-tenant-menu {
+    @apply rounded-lg mt-4;
+}
+
+.fi-global-search-field .fi-input-wrp, .fi-ta-search-field .fi-input-wrp {
+    @apply rounded-full;
+}
+
+.fi-global-search-field .fi-input-wrp {
+    @apply ring-4;
+}
+
+.fi-global-search-field .fi-input-wrp .fi-input-wrp-prefix {
+    @apply  rounded-full ps-2 mr-2;
+}
+
+.fi-btn:not(.fi-btn-group .fi-btn) {
+    @apply rounded-full;
+}
+
+.fi-btn-group > .fi-btn:first-of-type {
+    @apply rounded-s-full;
+}
+
+.fi-btn-group > .fi-btn:last-of-type {
+    @apply rounded-e-full;
+}
+
+.fi-btn-group {
+    @apply rounded-full;
+}
+
+
+.fi-badge {
+    @apply rounded-xl;
+}

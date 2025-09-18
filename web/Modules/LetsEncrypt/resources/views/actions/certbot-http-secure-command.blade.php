@@ -1,0 +1,14 @@
+sudo certbot certonly \
+    --non-interactive \
+    --agree-tos \
+    --manual \
+    --preferred-challenges=http \
+    -d {{$domain}} \
+    -d www.{{$domain}} \
+    --cert-name {{$domain}} \
+    --email {{$email}} \
+    --cert-path {{$sslCertificateFilePath}} \
+    --key-path {{$sslCertificateKeyFilePath}} \
+    --fullchain-path {{$sslCertificateChainFilePath}} \
+    --manual-auth-hook /usr/local/phyre/web/Modules/LetsEncrypt/shell/hooks/pre/http-authenticator.sh \
+    --force-renewal

@@ -1,0 +1,15 @@
+{
+    "LetsEncrypt": true,
+
+    "Docker": true,
+    "Customer": true,
+    "Model": true,
+    "DockerTemplate": true,
+    "Terminal": true,
+    "Mail": true,
+    "Email": true,
+    "Minecraft": true,
+    "SSLManager": true,
+    "Caddy": true,
+    "Microweber": true
+}

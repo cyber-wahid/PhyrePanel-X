@@ -1,0 +1,14 @@
+{
+    "name": "SSLManager",
+    "alias": "sslmanager",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "logoIcon": "/Modules/SSLManager/resources/assets/ssl-manager-svg/logo.svg",
+    "category": "Security",
+    "adminUrl": "/admin/certificates",
+    "providers": [
+        "Modules\\SSLManager\\App\\Providers\\SSLManagerServiceProvider"
+    ],
+    "files": []
+}
