@@ -26,7 +26,7 @@ OS_ID=$(cat /etc/os-release | grep -w "ID" | cut -d "=" -f 2 | tr -d '"')
 OS_ID_LIKE=$(cat /etc/os-release | grep -w "ID_LIKE" | cut -d "=" -f 2 | tr -d '"')
 DISTRO_VERSION=$(cat /etc/os-release | grep -w "VERSION_ID" | cut -d "=" -f 2 | tr -d '"')
 DISTRO_NAME=$(cat /etc/os-release | grep -w "NAME" | cut -d "=" -f 2 | tr -d '"')
-DISTRO_NAME=$(echo $DISTRO_NAME | tr '[:upper:]' '[:lower:]')
+DISTRO_NAME=$(echo $DISTRO_NAME | tr '[:upper:]' '[:lower:]' | sed 's/gnu\/linux//g')
 DISTRO_NAME=${DISTRO_NAME// /-}
 
 echo "Detected OS: $OS_ID $DISTRO_VERSION"
