@@ -99,7 +99,7 @@ if [[ "$OS_ID" == "fedora" ]]; then
     DISTRO_NAME="fedora"
 fi
 
-INSTALLER_URL="https://raw.githubusercontent.com/PhyreApps/PhyrePanel/main/installers/${DISTRO_NAME}-${DISTRO_VERSION}/install.sh"
+INSTALLER_URL="https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/master/installers/${DISTRO_NAME}-${DISTRO_VERSION}/install.sh"
 
 INSTALLER_CONTENT=$(wget ${INSTALLER_URL} 2>&1)
 if [[ "$INSTALLER_CONTENT" =~ 404\ Not\ Found ]]; then
