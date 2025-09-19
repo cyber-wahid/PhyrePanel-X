@@ -16,13 +16,11 @@ DEPENDENCIES_LIST=(
     "unzip"
     "zip"
     "tar"
-    "mysql-common"
-    "mysql-server"
-    "mysql-client"
+    "mariadb-server"
+    "mariadb-client"
     "lsb-release"
     "gnupg2"
     "ca-certificates"
-    "apt-transport-https"
     "software-properties-common"
     "supervisor"
     "libonig-dev"
@@ -31,40 +29,40 @@ DEPENDENCIES_LIST=(
     "libsodium23"
     "libpq5"
     "apache2"
-    "libapache2-mod-ruid2"
-    "libapache2-mod-php"
-    "libssl-dev"
+    "libapache2-mod-php8.2"
     "zlib1g-dev"
 )
 
-# Check if the dependencies are installed
+# Install dependencies
 for DEPENDENCY in "${DEPENDENCIES_LIST[@]}"; do
-    apt install -yq $DEPENDENCY
+    apt-get install -y $DEPENDENCY
 done
 
-# Start MySQL
-service mysql start
+# Start MariaDB
+systemctl start mariadb
+systemctl enable mariadb
 
 mkdir -p /usr/local/phyre/ssl
 
-wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/master/web/server/ssl/phyre.crt -O /usr/local/phyre/ssl/phyre.crt
-wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/master/web/server/ssl/phyre.key -O /usr/local/phyre/ssl/phyre.key
+# Download SSL certificates from the forked repository
+wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/main/web/server/ssl/phyre.crt -O /usr/local/phyre/ssl/phyre.crt
+wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/main/web/server/ssl/phyre.key -O /usr/local/phyre/ssl/phyre.key
 
 sudo chmod 644 /usr/local/phyre/ssl/phyre.crt
 sudo chmod 600 /usr/local/phyre/ssl/phyre.key
 
-wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/master/installers/debian-12/greeting.sh -O /etc/profile.d/phyre-greeting.sh
+# Download greeting script from the forked repository
+wget https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/main/installers/debian-12/greeting.sh -O /etc/profile.d/phyre-greeting.sh
 
-# Install PHYRE PHP
+# Install PHYRE PHP (DEB package)
 wget https://github.com/PhyreApps/PhyrePanelPHP/raw/main/compilators/debian/php/dist/phyre-php-8.2.0-debian-12.deb
 dpkg -i phyre-php-8.2.0-debian-12.deb
 
-# Install PHYRE NGINX
+# Install PHYRE NGINX (DEB package)
 wget https://github.com/PhyreApps/PhyrePanelNGINX/raw/main/compilators/debian/nginx/dist/phyre-nginx-1.24.0-debian-12.deb
 dpkg -i phyre-nginx-1.24.0-debian-12.deb
 
 PHYRE_PHP=/usr/local/phyre/php/bin/php
-
 ln -s $PHYRE_PHP /usr/bin/phyre-php
 
 curl -s https://phyrepanel.com/api/phyre-installation-log -X POST -H "Content-Type: application/json" -d '{"os": "debian-12"}'

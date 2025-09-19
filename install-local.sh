@@ -28,6 +28,7 @@ DISTRO_VERSION=$(cat /etc/os-release | grep -w "VERSION_ID" | cut -d "=" -f 2 | 
 DISTRO_NAME=$(cat /etc/os-release | grep -w "NAME" | cut -d "=" -f 2 | tr -d '"')
 DISTRO_NAME=$(echo $DISTRO_NAME | tr '[:upper:]' '[:lower:]' | sed 's/gnu\/linux//g')
 DISTRO_NAME=${DISTRO_NAME// /-}
+DISTRO_NAME=${DISTRO_NAME%-}  # Remove trailing dash
 
 echo "Detected OS: $OS_ID $DISTRO_VERSION"
 echo "Distribution: $DISTRO_NAME"
