@@ -50,7 +50,7 @@ if [[ "$SUPPORTED" != "true" ]]; then
     echo "This script must be run on a supported Linux distribution."
     echo "Supported distributions:"
     echo "  - Ubuntu 20.04, 22.04, 24.04"
-    echo "  - Debian 11, 12"
+    echo "  - Debian 11, 12, 13"
     echo "  - CentOS 7, 8, 9"
     echo "  - RHEL 7, 8, 9"
     echo "  - Rocky Linux 8, 9"
@@ -99,7 +99,16 @@ if [[ "$OS_ID" == "fedora" ]]; then
     DISTRO_NAME="fedora"
 fi
 
+# Handle Debian 13 (Trixie) - map to Debian 12 for compatibility
+if [[ "$OS_ID" == "debian" ]] && [[ "$DISTRO_VERSION" == "13" ]]; then
+    echo "Debian 13 (Trixie) detected. Using Debian 12 installer for compatibility..."
+    DISTRO_VERSION="12"
+fi
+
 INSTALLER_URL="https://raw.githubusercontent.com/cyber-wahid/PhyrePanel-X/master/installers/${DISTRO_NAME}-${DISTRO_VERSION}/install.sh"
+
+echo "Detected OS: $DISTRO_NAME $DISTRO_VERSION"
+echo "Downloading installer from: $INSTALLER_URL"
 
 INSTALLER_CONTENT=$(wget ${INSTALLER_URL} 2>&1)
 if [[ "$INSTALLER_CONTENT" =~ 404\ Not\ Found ]]; then
